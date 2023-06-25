@@ -1,6 +1,9 @@
 import QueryProvider from "@/context/query";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import SearchButton from "@/components/search-button";
+import { Button } from "@/components/ui/button";
+import { HomeIcon } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +20,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <header className="relative border-border border mb-2 shadow-sm">
+            <nav className="container flex justify-between h-12 items-center">
+              <Button variant="link">
+                <HomeIcon />
+              </Button>
+              <SearchButton></SearchButton>
+            </nav>
+          </header>
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

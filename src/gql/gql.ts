@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query Collections($cursor: String) {\n    collections(first: 6, after: $cursor) {\n      pageInfo {\n        hasPreviousPage\n        hasNextPage\n        startCursor\n        endCursor\n      }\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n  }\n": types.CollectionsDocument,
-    "\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n      }\n    }\n  }\n": types.SearchDocument,
+    "\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        image {\n          url\n        }\n      }\n    }\n  }\n": types.SearchDocument,
 };
 
 /**
@@ -38,7 +38,7 @@ export function graphql(source: "\n  query Collections($cursor: String) {\n    c
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n      }\n    }\n  }\n"): (typeof documents)["\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        image {\n          url\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        image {\n          url\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
