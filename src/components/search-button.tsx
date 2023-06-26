@@ -75,13 +75,9 @@ const SearchButton = () => {
 
   const debouncedInput = useDebounce(input, 200);
 
-  const { data, isLoading } = useQuery(
-    SearchQuery,
-    {
-      query: debouncedInput,
-    },
-    {}
-  );
+  const { data, isLoading } = useQuery(SearchQuery, {
+    query: debouncedInput,
+  });
 
   const noResults =
     !isLoading &&
