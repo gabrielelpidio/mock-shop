@@ -3,7 +3,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import SearchButton from "@/components/search-button";
 import { Button } from "@/components/ui/button";
-import { HomeIcon } from "lucide-react";
+import { Shapes } from "lucide-react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,10 @@ export default function RootLayout({
         <QueryProvider>
           <header className="relative border-border border mb-2 shadow-sm">
             <nav className="container flex justify-between h-12 items-center">
-              <Button variant="link">
-                <HomeIcon />
+              <Button variant="link" asChild>
+                <Link href="/">
+                  <Shapes />
+                </Link>
               </Button>
               <SearchButton></SearchButton>
             </nav>

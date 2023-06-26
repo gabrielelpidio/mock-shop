@@ -26,12 +26,14 @@ export const ListingCard = ({
         <div className="rounded-md rounded-b-none overflow-hidden aspect-square">
           <img src={img} alt="" />
         </div>
-        <div className="flex items-center justify-between px-2">
-          <h2 className="text-xl font-semibold">{title}</h2>
+        <div className="flex items-start justify-between px-2 flex-col">
+          <h2 className="text-xl font-semibold text-ellipsis whitespace-nowrap w-full overflow-hidden">
+            {title}
+          </h2>
 
           {currency && amount && (
             <Price
-              className="text-accent-foreground"
+              className="text-accent-foreground flex-grow"
               currency={currency}
               amount={amount}
             />

@@ -75,9 +75,9 @@ const ShowcaseList = ({
 export default async function Home() {
   const data = await client(HomeQuery);
   return (
-    <main className="container">
+    <main className="container py-4">
       <div className="flex flex-col gap-12">
-        <h1 className="text-4xl font-semibold">Welcome to your store</h1>
+        <h1 className="text-4xl font-semibold">Welcome to mock store</h1>
         <ShowcaseList href="/collections" title="Collections">
           {data?.collections?.nodes?.map((item) => (
             <ShowcaseListItem

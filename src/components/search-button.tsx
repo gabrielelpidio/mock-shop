@@ -101,7 +101,7 @@ const SearchButton = () => {
             }}
           />
 
-          <CommandList className="sm:max-h-[40vh] max-h-[calc(100vh-45px)] overflow-auto">
+          <CommandList className="sm:max-h-[40vh] sm:min-h-[350px]  max-h-[calc(100vh-45px)] overflow-auto">
             {isLoading && (
               <CommandLoading>
                 <div className="flex gap-2 text-center justify-center py-6 w-full">
@@ -120,26 +120,28 @@ const SearchButton = () => {
             >
               <CommandGroup
                 heading="Collections"
-                className="sm:col-span-4 relative sm:max-h-[calc(40vh-0.5rem)] overflow-auto pb-3"
+                className="sm:col-span-4 relative flex flex-col pb-3"
               >
                 {data?.collections?.nodes?.length === 0 && (
                   <EmptyResult>
                     No collections found for <strong>{input}</strong>
                   </EmptyResult>
                 )}
-                <div className="flex flex-row sm:flex-col">
+                <div className="flex flex-row sm:flex-col flex-shrink flex-wrap">
                   {data?.collections?.nodes?.map((collection) => (
                     <CommandItem
                       key={collection.handle}
                       className="gap-2 flex-col sm:flex-row"
                     >
-                      <div className="h-12 w-12 rounded-sm overflow-hidden">
+                      <div className="h-12 w-12 rounded-sm overflow-hidden sm:block hidden">
                         <img
                           src={collection.image?.url}
                           className="object-cover"
                         />
                       </div>
-                      <span className="text-ellipsis">{collection.title}</span>
+                      <span className="text-ellipsis text-sm">
+                        {collection.title}
+                      </span>
                     </CommandItem>
                   ))}
                 </div>
@@ -147,9 +149,9 @@ const SearchButton = () => {
 
               <CommandGroup
                 heading="Products"
-                className="sm:col-span-8 row-start-1 [&>[cmdk-group-items]]:flex-grow sm:row-start-auto min-h-full justify-between flex flex-col"
+                className="sm:col-span-8 row-start-1 [&>[cmdk-group-items]]:flex-grow sm:row-start-auto justify-between flex flex-col h-full"
               >
-                <div className="sm:flex w-full h-full gap-1 overflow-auto pb-2 grid grid-cols-2">
+                <div className="w-full max-h-[300px] gap-1 overflow-auto pb-2 grid grid-cols-2">
                   {data?.products?.nodes?.length === 0 && (
                     <EmptyResult className="col-span-full">
                       No products found for <strong>{input}</strong>
@@ -158,14 +160,16 @@ const SearchButton = () => {
                   {data?.products?.nodes?.map((product) => (
                     <CommandItem
                       key={product.handle}
-                      className="flex flex-col transition-colors"
+                      className="flex flex-col sm:flex-row transition-colors gap-2"
                     >
-                      <div className="rounded-sm sm:w-48 sm:h-48">
-                        <img src={product.featuredImage?.url} alt="" />
+                      <div className="rounded-sm sm:w-20 sm:h-20">
+                        <img
+                          src={product.featuredImage?.url}
+                          alt=""
+                          className="h-full w-full"
+                        />
                       </div>
-                      <div className="flex items-center h-full">
-                        {product.title}
-                      </div>
+                      <div className="flex items-center">{product.title}</div>
                     </CommandItem>
                   ))}
                 </div>
