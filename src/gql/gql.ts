@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query Collections($cursor: String) {\n    collections(first: 6, after: $cursor) {\n      pageInfo {\n        hasPreviousPage\n        hasNextPage\n        startCursor\n        endCursor\n      }\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n  }\n": types.CollectionsDocument,
+    "\n  query Collections {\n    collections(first: 6) {\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n    products(first: 6) {\n      nodes {\n        handle\n        title\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n  }\n": types.CollectionsDocument,
     "\n  query Search($query: String) {\n    products(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n    collections(query: $query, first: 5) {\n      nodes {\n        title\n        handle\n        description\n        descriptionHtml\n        image {\n          url\n        }\n      }\n    }\n  }\n": types.SearchDocument,
 };
 
@@ -34,7 +34,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Collections($cursor: String) {\n    collections(first: 6, after: $cursor) {\n      pageInfo {\n        hasPreviousPage\n        hasNextPage\n        startCursor\n        endCursor\n      }\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n  }\n"): (typeof documents)["\n  query Collections($cursor: String) {\n    collections(first: 6, after: $cursor) {\n      pageInfo {\n        hasPreviousPage\n        hasNextPage\n        startCursor\n        endCursor\n      }\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query Collections {\n    collections(first: 6) {\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n    products(first: 6) {\n      nodes {\n        handle\n        title\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Collections {\n    collections(first: 6) {\n      nodes {\n        handle\n        image {\n          url\n        }\n        title\n        description\n        descriptionHtml\n      }\n    }\n    products(first: 6) {\n      nodes {\n        handle\n        title\n        description\n        descriptionHtml\n        featuredImage {\n          id\n          url\n        }\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
