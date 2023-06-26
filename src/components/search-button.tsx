@@ -5,9 +5,7 @@ import {
   CommandInput,
   CommandList,
   CommandGroup,
-  CommandEmpty,
   CommandItem,
-  CommandSeparator,
 } from "@/components/ui/command";
 import { Search, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
@@ -17,7 +15,6 @@ import { CommandLoading } from "cmdk";
 import { graphql } from "@/gql";
 import { useQuery } from "@/lib/gql-hooks";
 import { cn } from "@/lib/utils";
-import { Avatar } from "./ui/avatar";
 
 const SearchQuery = graphql(`
   query Search($query: String) {

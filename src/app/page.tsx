@@ -36,19 +36,15 @@ const HomeQuery = graphql(`
 `);
 
 const ShowcaseListItem = ({
-  href,
   image,
   title,
 }: {
-  href: string;
   image: string;
   title: string;
 }) => (
   <li className="col-span-2 w-48 flex-shrink-0 flex-grow max-w-[]">
-    <Link href={href} className="h-full block">
-      <img src={image} className="rounded-md aspect-square" />
-      <h2 className="text-xl">{title}</h2>
-    </Link>
+    <img src={image} className="rounded-md aspect-square" />
+    <h2 className="text-xl">{title}</h2>
   </li>
 );
 
@@ -81,7 +77,6 @@ export default async function Home() {
         <ShowcaseList href="/collections" title="Collections">
           {data?.collections?.nodes?.map((item) => (
             <ShowcaseListItem
-              href={`/collection/${item?.handle}`}
               image={item?.image?.url}
               title={item?.title}
               key={item.handle}
@@ -91,7 +86,6 @@ export default async function Home() {
         <ShowcaseList href="/products" title="Products">
           {data?.products?.nodes?.map((item) => (
             <ShowcaseListItem
-              href={`/products/${item?.handle}`}
               image={item?.featuredImage?.url}
               title={item?.title}
               key={item.handle}
