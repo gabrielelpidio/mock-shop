@@ -20,6 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Search bar
 - [x] All products list at `/products` with pagination
 - [x] All collections list at `/collections` with pagination
+- [x] Basic E2E tests with Cypress
 - [ ] Product page
 - [ ] Collection page
 - [ ] Cart page
