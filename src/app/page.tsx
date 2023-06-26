@@ -4,8 +4,11 @@ import client from "@/lib/isomorphicFetcher";
 import { ChevronRight } from "lucide-react";
 import { PropsWithChildren } from "react";
 
-const ProductQuery = graphql(`
-  query Collections {
+/* Queries could be generally improved if using fragments, less verbose 
+and if using a sophisticated client could help with caching and bundle size*/
+
+const HomeQuery = graphql(`
+  query HomeQuery {
     collections(first: 6) {
       nodes {
         handle
@@ -70,7 +73,7 @@ const ShowcaseList = ({
 );
 
 export default async function Home() {
-  const data = await client(ProductQuery);
+  const data = await client(HomeQuery);
   return (
     <main className="container">
       <div className="flex flex-col gap-12">
