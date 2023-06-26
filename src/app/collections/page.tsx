@@ -3,11 +3,8 @@ import {
   ListingGrid,
   ListingPageNavigation,
 } from "@/components/listing";
-import Price from "@/components/price";
-import { Button } from "@/components/ui/button";
 import { graphql } from "@/gql/gql";
 import client from "@/lib/isomorphicFetcher";
-import Link from "next/link";
 
 const PAGE_SIZE = 6;
 
@@ -85,10 +82,16 @@ const ProductListingPage = async ({
       <hr className="w-full border-border" />
 
       <ListingPageNavigation
-        afterHref={`/collections?after=${data.collections.pageInfo.endCursor}`}
-        beforeHref={`/collections?before=${data.collections.pageInfo.startCursor}`}
-        hasPreviousPage={data.collections.pageInfo.hasPreviousPage}
-        hasNextPage={data.collections.pageInfo.hasNextPage}
+        afterHref={
+          data.collections.pageInfo.hasNextPage
+            ? `/collections?after=${data.collections.pageInfo.endCursor}`
+            : null
+        }
+        beforeHref={
+          data.collections.pageInfo.hasPreviousPage
+            ? `/collections?before=${data.collections.pageInfo.startCursor}`
+            : null
+        }
       />
     </main>
   );

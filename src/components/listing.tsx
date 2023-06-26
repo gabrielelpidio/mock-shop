@@ -56,23 +56,27 @@ export const ListingGrid = ({
 };
 
 export const ListingPageNavigation = ({
-  hasNextPage,
-  hasPreviousPage,
   beforeHref,
   afterHref,
 }: {
-  hasNextPage: boolean;
-  hasPreviousPage: boolean;
-  beforeHref: string;
-  afterHref: string;
+  beforeHref?: string | null;
+  afterHref?: string | null;
 }) => {
   return (
     <div className="py-4 gap-2 flex w-full justify-end">
-      <Button asChild variant="outline" disabled={!hasPreviousPage}>
-        <Link href={beforeHref}>Previous page</Link>
+      <Button
+        asChild={Boolean(beforeHref)}
+        variant="outline"
+        disabled={!beforeHref}
+      >
+        <Link href={beforeHref ?? "#"}>Previous page</Link>
       </Button>
-      <Button asChild variant="outline" disabled={!hasNextPage}>
-        <Link href={afterHref}>Next Page</Link>
+      <Button
+        asChild={Boolean(afterHref)}
+        variant="outline"
+        disabled={!afterHref}
+      >
+        <Link href={afterHref ?? "#"}>Next Page</Link>
       </Button>
     </div>
   );

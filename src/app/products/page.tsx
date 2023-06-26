@@ -94,10 +94,16 @@ const ProductListingPage = async ({
       <hr className="w-full border-border" />
 
       <ListingPageNavigation
-        afterHref={`/products?after=${data.products.pageInfo.endCursor}`}
-        beforeHref={`/products?before=${data.products.pageInfo.startCursor}`}
-        hasPreviousPage={data.products.pageInfo.hasPreviousPage}
-        hasNextPage={data.products.pageInfo.hasNextPage}
+        afterHref={
+          data.products.pageInfo.hasNextPage
+            ? `/products?after=${data.products.pageInfo.endCursor}`
+            : null
+        }
+        beforeHref={
+          data.products.pageInfo.hasPreviousPage
+            ? `/products?before=${data.products.pageInfo.startCursor}`
+            : null
+        }
       />
     </main>
   );
